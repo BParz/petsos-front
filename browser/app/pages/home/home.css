@@ -1,0 +1,62 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Responsive utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Texto responsivo */
+.responsive-title {
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.2;
+}
+
+.responsive-text {
+  font-size: clamp(14px, 2vw, 18px);
+  line-height: 1.6;
+}
+
+/* Grid responsivo */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Botones responsivos */
+.responsive-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .responsive-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .responsive-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .responsive-buttons button {
+    width: 100%;
+    max-width: 300px;
+  }
+} 

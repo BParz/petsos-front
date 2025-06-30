@@ -1,0 +1,228 @@
+<!-- Header/Navegación -->
+<div style="background: linear-gradient(135deg, #fffefc, #f4f3f2); padding: 20px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+  <div style="color: rgb(0, 0, 0); text-align: center; max-width: 1200px; margin: 0 auto;">
+<span style="color:darkslategrey;"></span>
+<span style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 800; margin-left: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgb(0, 57, 74) !important;">PetSoS</span>
+</div>
+<img src="src/assets/logo.png" alt=" no puedoooo poner el logoooooooooooooooo " style="height: 40px; width: auto; margin-right: 10px; border-radius: 50px;" />
+<div style="background: linear-gradient(135deg, #dfdfdf 0%, #f3f3f3 100%); padding: 60px 20px;">
+  <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+   <h1 style="font-family: 'Montserrat', sans-serif; font-size: clamp(42px, 10vw, 72px); color: #2c3e50; margin-bottom: 20px; font-weight: 700; line-height: 1.2; letter-spacing: 1px; text-align: center;">
+  <span style="color: #FF8C00; font-weight: 800;">Tecnología QR</span> <span style="color: #3498db;">  📍GPS</span><br>
+  <span style="color: #2c3e50; font-weight: 700;">Para Mascotas Seguras y felices</span>
+</h1>
+    
+    <p style="font-family: 'Inter', sans-serif; font-size: clamp(20px, 6vw, 36px); color: #093f75; margin-bottom: 40px; line-height: 1.6; max-width: 700px; margin-left: auto; margin-right: auto; font-weight: 500; text-align: center;">
+  Reencuentra a tu mejor amigo al instante. Si se pierde, quien lo encuentre puede contactarte inmediatamente y entregar la ubicación en tiempo real escaneando el código QR.
+</p>
+    
+    <!-- Mascota personalizada de Petsos -->
+    <div style="margin: 40px 0; position: relative; display: inline-block;">
+      <div style="font-size: clamp(80px, 15vw, 120px); animation: bounce 2s infinite; position: relative; z-index: 2;">
+        🐕‍🦺
+      </div>
+      <!-- Código QR animado -->
+      <div style="position: absolute; top: -20px; right: -30px; font-size: 40px; animation: pulse 2s infinite; z-index: 1;">
+        📱
+      </div>
+      <!-- Corazón flotante -->
+      <div style="position: absolute; bottom: -10px; left: -20px; font-size: 30px; animation: float 3s ease-in-out infinite; z-index: 1;">
+        💙
+      </div>
+    </div>
+    
+    <div style="background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 15px; margin: 20px auto; max-width: 500px; backdrop-filter: blur(10px);">
+      <h3 style="color: #2c3e50; margin-bottom: 10px; font-size: 18px;">¿Cómo funciona PetSoS?</h3>
+      <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 15px;">
+        <div style="text-align: center; flex: 1; min-width: 120px;">
+          <div style="font-size: 24px; margin-bottom: 5px;">1️⃣</div>
+          <small style="color: #666;">Crea tu perfil usuario</small>
+        </div>
+        <div style="text-align: center; flex: 1; min-width: 120px;">
+          <div style="font-size: 24px; margin-bottom: 5px;">2️⃣</div>
+          <small style="color: #666;">Crea el perfil de tu mascota</small>
+        </div>
+        <div style="text-align: center; flex: 1; min-width: 120px;">
+          <div style="font-size: 24px; margin-bottom: 5px;">3️⃣</div>
+          <small style="color: #666;">Genera el Qr de tu mejor amigo</small>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Botones principales mejorados -->
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 40px;">
+      <button style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 18px 32px; border: none; border-radius: 50px; font-size: 16px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; min-width: 200px;">
+        👤 Soy Dueño
+      </button>
+      <button style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 18px 32px; border: none; border-radius: 50px; font-size: 16px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; min-width: 200px;">
+        📝 Registrar Mascota
+      </button>
+      <button style="background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; padding: 18px 32px; border: none; border-radius: 50px; font-size: 16px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; min-width: 200px;">
+        📱 Generar QR 
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-20px); }
+  60% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+@media (max-width: 768px) {
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-buttons button {
+    width: 100%;
+    max-width: 300px;
+    min-width: auto;
+  }
+}
+</style>
+
+<!-- Sección de Servicios -->
+<div style="padding: 80px 20px; background: #f8f9fa;">
+  <div style="max-width: 1000px; margin: 0 auto;">
+    <h2 style="font-size: 36px; font-weight: 700; text-align: center; color: #2c3e50; margin-bottom: 16px;">
+      Soluciones Pet 
+    </h2>
+    <p style="font-size: 18px; text-align: center; color: #7f8c8d; margin-bottom: 48px;">
+      Todo lo que tu mascota necesita para estar protegida, sana y feliz 
+    </p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+      <!-- Servicio 1 -->
+      <div style="background: white; padding: 40px 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.3s ease;">
+        <div style="font-size: 60px; margin-bottom: 20px;">"logo"</div>
+        <h3 style="font-size: 24px; color: #2c3e50; margin-bottom: 15px; font-weight: 600;">Secupet</h3>
+        <p style="color: #7f8c8d; line-height: 1.6; margin-bottom: 25px;">
+          ¿Tu mascota no puede pagar su seguro? tu si. Con Secupet, tu mascota está protegida con un seguro de salud accesible y completo.
+        </p>
+        <button style="background: linear-gradient(135deg, #FF8C00, #FFA500); color: white; border: none; padding: 12px 24px; border-radius: 25px; font-weight: 600; cursor: pointer;">
+          Proximamente
+        </button>
+      </div>
+      
+      <!-- Servicio 2 -->
+      <div style="background: white; padding: 40px 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.3s ease;">
+        <div style="font-size: 60px; margin-bottom: 20px;">logo</div>
+        <h3 style="font-size: 24px; color: #2c3e50; margin-bottom: 15px; font-weight: 600;">nombre de veterinaria (Nacho)</h3>
+        <p style="color: #7f8c8d; line-height: 1.6; margin-bottom: 25px;">
+          Veterinaria de confianza con atención personalizada y servicios de calidad para el bienestar de tu mascota.
+        </p>
+        <button style="background: linear-gradient(135deg, #FF8C00, #FFA500); color: white; border: none; padding: 12px 24px; border-radius: 25px; font-weight: 600; cursor: pointer;">
+          Ver más
+        </button>
+      </div>
+      
+      <!-- Servicio 3 -->
+      <div style="background: white; padding: 40px 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.3s ease;">
+        <div style="font-size: 60px; margin-bottom: 20px;">logo refugio</div>
+        <h3 style="font-size: 24px; color: #2c3e50; margin-bottom: 15px; font-weight: 600;">Refugios sin fines de lucro</h3>
+        <p style="color: #7f8c8d; line-height: 1.6; margin-bottom: 25px;">
+          Un hogar mientras encuentran el suyo. Apoyamos refugios sin fines de lucro que brindan amor y cuidado a mascotas necesitadas.
+        </p>
+        <button style="background: linear-gradient(135deg, #FF8C00, #FFA500); color: white; border: none; padding: 12px 24px; border-radius: 25px; font-weight: 600; cursor: pointer;">
+          Proximamnete
+        </button>
+      </div>
+      </div>
+    </div>
+  </div>
+  <!-- Sección de Collares -->
+<div style="padding: 80px 20px; background: white;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <h2 style="font-size: 36px; font-weight: 700; text-align: center; color: #2c3e50; margin-bottom: 16px;">
+      Nuestros Collares Inteligentes
+    </h2>
+    <p style="font-size: 18px; text-align: center; color: #7f8c8d; margin-bottom: 48px;">
+      Collares premium con tecnología QR integrada
+    </p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+      <!-- Collar Básico -->
+      <div style="background: white; border: 2px solid #e9ecef; border-radius: 20px; padding: 30px; text-align: center; transition: all 0.3s ease; position: relative;">
+        <div style="margin-bottom: 20px;">
+          <span style="font-size: 80px; display: block;">🟦</span>
+        </div>
+        <h3 style="font-size: 24px; color: #2c3e50; margin-bottom: 20px; font-weight: 600;"> Collar Firulais </h3>
+        
+        <div style="text-align: left; margin-bottom: 25px;">
+          <div style="color: #27ae60; font-size: 14px; margin-bottom: 8px;">✅ Material resistente</div>
+          <div style="color: #27ae60; font-size: 14px; margin-bottom: 8px;">✅ Placa QR incluida</div>
+          <div style="color: #27ae60; font-size: 14px; margin-bottom: 8px;">✅ Ajustable (Perros y Gatos)</div>
+        </div>
+        
+        <div style="font-size: 28px; font-weight: bold; color: #FF8C00; margin-bottom: 20px;">$8.990</div>
+        
+        <button style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; border: none; padding: 15px 30px; border-radius: 30px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.3s ease;">
+          Comprar
+        </button>
+      </div>
+
+      <!-- Collar Premium -->
+      <div style="background: white; border: 2px solid #FF8C00; border-radius: 20px; padding: 30px; text-align: center; transform: scale(1.05); box-shadow: 0 15px 35px rgba(255, 140, 0, 0.2); position: relative;">
+        <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: #FF8C00; color: white; padding: 6px 16px; border-radius: 15px; font-size: 12px; font-weight: bold;">
+          MÁS POPULAR
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+          <span style="font-size: 80px; display: block;">🟨</span>
+        </div>
+        <h3 style="font-size: 24px; color: #2c3e50; margin-bottom: 20px; font-weight: 600;">Collar Max</h3>
+        
+        <div style="text-align: left; margin-bottom: 25px;">
+          <div style="color: #27ae60; font-size: 14px; margin-bottom: 8px;">✅ Perzonaliza el diseño</div>
+          <div style="color: #27ae60; font-size: 14px; margin-bottom: 8px;">✅ Placa QR metalica y altamente resistente</div>
+          <div style="color: #27ae60; font-size: 14px; margin-bottom: 8px;">✅ Reflectivo nocturno</div>
+          <div style="color: #27ae60; font-size: 14px; margin-bottom: 8px;">✅ Acolchado interno</div>
+          <div style="color: #27ae60; font-size: 14px; margin-bottom: 8px;">✅ Tecnologia📍GPS (rastrea a tu amiguito en todo momento)</div>
+        </div>
+        
+        <div style="font-size: 28px; font-weight: bold; color: #FF8C00; margin-bottom: 20px;">$20.990</div>
+        
+        <button style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; border: none; padding: 15px 30px; border-radius: 30px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.3s ease;">
+          Proximamente
+        </button>
+      </div>
+
+      <!-- Collar Deluxe -->
+      <div style="background: white; border: 2px solid #e9ecef; border-radius: 20px; padding: 30px; text-align: center; transition: all 0.3s ease; position: relative;">
+        <div style="margin-bottom: 20px;">
+          <span style="font-size: 80px; display: block;">🟫</span>
+        </div>
+        <h3 style="font-size: 24px; color: #2c3e50; margin-bottom: 20px; font-weight: 600;">Collar Max-Pro</h3>
+        
+        <div style="text-align: left; margin-bottom: 25px;">
+          <div style="color: #27ae60; font-size: 14px; margin-bottom: 8px;">✅ Perzonaliza el diseño</div>
+          <div style="color: #27ae60; font-size: 14px; margin-bottom: 8px;">✅ Placa QR digital</div>
+          <div style="color: #27ae60; font-size: 14px; margin-bottom: 8px;">✅ GPS integrado</div>
+          <div style="color: #27ae60; font-size: 14px; margin-bottom: 8px;">✅ Resistente al agua</div>
+          <div style="color: #27ae60; font-size: 14px; margin-bottom: 8px;">✅ controla los signos vitales basicos de tu mascota</div>
+        </div>
+        
+        <div style="font-size: 28px; font-weight: bold; color: #FF8C00; margin-bottom: 20px;">$50.990</div>
+        
+        <button style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; border: none; padding: 15px 30px; border-radius: 30px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.3s ease;">
+          Proximamente
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
