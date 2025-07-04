@@ -1,0 +1,129 @@
+<mat-toolbar color="primary" class="header-toolbar">
+    <div class="container-fluid">
+        <!-- Logo y título -->
+        <div class="d-flex align-items-center">
+            <button mat-icon-button (click)="toggleMenu()" class="d-md-none me-2">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <div class="d-flex align-items-center">
+                <mat-icon class="me-2">pets</mat-icon>
+                <span class="brand-text">PetSOS</span>
+            </div>
+        </div>
+
+        <!-- Navegación desktop -->
+        <nav class="d-none d-md-flex align-items-center">
+            <button mat-button [class.active]="isActiveRoute('/')" (click)="navigateTo('/')" class="nav-button">
+                <mat-icon class="me-1">home</mat-icon>
+                Inicio
+            </button>
+
+            <button mat-button [class.active]="isActiveRoute('/registro-pet')" (click)="navigateTo('/registro-pet')"
+                class="nav-button">
+                <mat-icon class="me-1">add_circle</mat-icon>
+                Registrar Mascota
+            </button>
+
+            <button mat-button [class.active]="isActiveRoute('/generar-qr')" (click)="navigateTo('/generar-qr')"
+                class="nav-button">
+                <mat-icon class="me-1">qr_code</mat-icon>
+                Generar QR
+            </button>
+
+            <button mat-button [class.active]="isActiveRoute('/mascotas')" (click)="navigateTo('/mascotas')"
+                class="nav-button">
+                <mat-icon class="me-1">pets</mat-icon>
+                Mis Mascotas
+            </button>
+        </nav>
+
+        <!-- Menú de usuario -->
+        <div class="d-none d-md-flex align-items-center">
+            <button mat-icon-button [matMenuTriggerFor]="userMenu">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+            <mat-menu #userMenu="matMenu">
+                <button mat-menu-item routerLink="/registro-usuario">
+                    <mat-icon>person_add</mat-icon>
+                    <span>Registrarme</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>person</mat-icon>
+                    <span>Mi Perfil</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>settings</mat-icon>
+                    <span>Configuración</span>
+                </button>
+                <mat-divider></mat-divider>
+                <button mat-menu-item>
+                    <mat-icon>logout</mat-icon>
+                    <span>Cerrar Sesión</span>
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+</mat-toolbar>
+
+<!-- Overlay para el menú móvil -->
+@if (isMenuOpen) {
+<div class="mobile-overlay" (click)="toggleMenu()"></div>
+}
+
+<!-- Menú móvil (sidenav) - Solo visible en móviles -->
+<div class="d-md-none">
+    <div class="mobile-menu" [class.open]="isMenuOpen">
+        <div class="mobile-menu-header">
+            <div class="d-flex align-items-center p-3">
+                <mat-icon class="me-2">pets</mat-icon>
+                <span class="brand-text">PetSOS</span>
+            </div>
+        </div>
+
+        <div class="mobile-menu-content">
+            <div class="mobile-nav-item" [class.active]="isActiveRoute('/')" (click)="navigateTo('/')">
+                <mat-icon>home</mat-icon>
+                <span>Inicio</span>
+            </div>
+
+            <div class="mobile-nav-item" [class.active]="isActiveRoute('/registro-pet')"
+                (click)="navigateTo('/registro-pet')">
+                <mat-icon>add_circle</mat-icon>
+                <span>Registrar Mascota</span>
+            </div>
+
+            <div class="mobile-nav-item" [class.active]="isActiveRoute('/generar-qr')"
+                (click)="navigateTo('/generar-qr')">
+                <mat-icon>qr_code</mat-icon>
+                <span>Generar QR</span>
+            </div>
+
+            <div class="mobile-nav-item" [class.active]="isActiveRoute('/mascotas')" (click)="navigateTo('/mascotas')">
+                <mat-icon>pets</mat-icon>
+                <span>Mis Mascotas</span>
+            </div>
+        </div>
+
+        <div class="mobile-menu-footer">
+            <mat-divider></mat-divider>
+            <div class="p-3">
+                <button mat-button class="w-100 mb-2" routerLink="/registro-usuario">
+                    <mat-icon class="me-2">person_add</mat-icon>
+                    Registrarme
+                </button>
+                <button mat-button class="w-100 mb-2">
+                    <mat-icon class="me-2">person</mat-icon>
+                    Mi Perfil
+                </button>
+                <button mat-button class="w-100 mb-2">
+                    <mat-icon class="me-2">settings</mat-icon>
+                    Configuración
+                </button>
+                <button mat-button class="w-100">
+                    <mat-icon class="me-2">logout</mat-icon>
+                    Cerrar Sesión
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

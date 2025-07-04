@@ -1,0 +1,97 @@
+<div class="registro-container">
+    <div class="registro-card">
+        <div class="registro-header">
+            <mat-icon class="registro-icon">person_add</mat-icon>
+            <h1>Registrarme en PetSOS</h1>
+            <p>Únete a nuestra comunidad y protege a tus mascotas</p>
+        </div>
+
+        <form [formGroup]="registroForm" (ngSubmit)="onSubmit()" class="registro-form">
+            <!-- Nombre -->
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="firstName" placeholder="Ingresa tu nombre">
+                <mat-icon matSuffix>person</mat-icon>
+                @if (firstName?.hasError('required')) {
+                <mat-error>El nombre es requerido</mat-error>
+                }
+                @if (firstName?.hasError('minlength')) {
+                <mat-error>El nombre debe tener al menos 2 caracteres</mat-error>
+                }
+            </mat-form-field>
+
+            <!-- Apellido -->
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Apellido</mat-label>
+                <input matInput formControlName="lastName" placeholder="Ingresa tu apellido">
+                <mat-icon matSuffix>person</mat-icon>
+                @if (lastName?.hasError('required')) {
+                <mat-error>El apellido es requerido</mat-error>
+                }
+                @if (lastName?.hasError('minlength')) {
+                <mat-error>El apellido debe tener al menos 2 caracteres</mat-error>
+                }
+            </mat-form-field>
+
+            <!-- Email -->
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Correo electrónico</mat-label>
+                <input matInput formControlName="email" type="email" placeholder="ejemplo@correo.com">
+                <mat-icon matSuffix>email</mat-icon>
+                @if (email?.hasError('required')) {
+                <mat-error>El email es requerido</mat-error>
+                }
+                @if (email?.hasError('email')) {
+                <mat-error>Ingresa un email válido</mat-error>
+                }
+            </mat-form-field>
+
+            <!-- Contraseña -->
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Contraseña</mat-label>
+                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password"
+                    placeholder="Mínimo 6 caracteres">
+                <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
+                    <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                @if (password?.hasError('required')) {
+                <mat-error>La contraseña es requerida</mat-error>
+                }
+                @if (password?.hasError('minlength')) {
+                <mat-error>La contraseña debe tener al menos 6 caracteres</mat-error>
+                }
+            </mat-form-field>
+
+            <!-- Confirmar Contraseña -->
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Confirmar contraseña</mat-label>
+                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="confirmPassword"
+                    placeholder="Repite tu contraseña">
+                <mat-icon matSuffix>lock</mat-icon>
+                @if (confirmPassword?.hasError('required')) {
+                <mat-error>Confirma tu contraseña</mat-error>
+                }
+                @if (confirmPassword?.hasError('passwordMismatch')) {
+                <mat-error>Las contraseñas no coinciden</mat-error>
+                }
+            </mat-form-field>
+
+            <!-- Botón de registro -->
+            <button mat-raised-button color="primary" type="submit" class="registro-button"
+                [disabled]="isLoading || !registroForm.valid">
+                @if (!isLoading) {
+                <mat-icon>person_add</mat-icon>
+                }
+                @if (isLoading) {
+                <mat-spinner diameter="20"></mat-spinner>
+                }
+                {{ isLoading ? 'Registrando...' : 'Registrarme' }}
+            </button>
+        </form>
+
+        <div class="registro-footer">
+            <p>¿Ya tienes una cuenta? <a routerLink="/login">Inicia sesión</a></p>
+            <p>Al registrarte, aceptas nuestros <a href="#">Términos y Condiciones</a></p>
+        </div>
+    </div>
+</div>

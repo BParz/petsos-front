@@ -1,0 +1,98 @@
+<div class="container mt-4 form-registro-pet">
+    <mat-card class="card-pet">
+        <mat-card-header>
+            <mat-card-title class="text-white-shadow">
+                <mat-icon class="me-2">pets</mat-icon>
+                Registro de Mascota
+            </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form [formGroup]="formPet" class="form-pet">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Nombre de la mascota</mat-label>
+                            <input matInput formControlName="petName" placeholder="Ingresa el nombre">
+                            @if (formPet.get('petName')?.errors?.['required']) {
+                            <mat-error>El nombre de la mascota es requerido</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-6">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Tipo de mascota</mat-label>
+                            <mat-select formControlName="petType">
+                                <mat-option value="dog">Perro</mat-option>
+                                <mat-option value="cat">Gato</mat-option>
+                                <mat-option value="bird">Pájaro</mat-option>
+                                <mat-option value="other">Otro</mat-option>
+                            </mat-select>
+                            @if (formPet.get('petType')?.errors?.['required']) {
+                            <mat-error>El tipo de mascota es requerido</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-6">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Raza de la mascota</mat-label>
+                            <input matInput formControlName="petBreed" placeholder="Ingresa la raza">
+                            @if (formPet.get('petBreed')?.errors?.['required']) {
+                            <mat-error>La raza de la mascota es requerida</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-6">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Color de la mascota</mat-label>
+                            <input matInput formControlName="petColor" placeholder="Ingresa el color">
+                            @if (formPet.get('petColor')?.errors?.['required']) {
+                            <mat-error>El color de la mascota es requerido</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-6">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Género de la mascota</mat-label>
+                            <mat-select formControlName="petGender">
+                                <mat-option value="male">Macho</mat-option>
+                                <mat-option value="female">Hembra</mat-option>
+                            </mat-select>
+                            @if (formPet.get('petGender')?.errors?.['required']) {
+                            <mat-error>El género de la mascota es requerido</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-6">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Fecha de nacimiento</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="petBirthDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            @if (formPet.get('petBirthDate')?.errors?.['required']) {
+                            <mat-error>La fecha de nacimiento es requerida</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="text-center mt-5">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="formPet.invalid"
+                        class="me-3 btn-pet-primary">
+                        <mat-icon class="me-1">save</mat-icon>
+                        Registrar Mascota
+                    </button>
+                    <button mat-button type="button" class="btn-pet-secondary">
+                        <mat-icon class="me-1">cancel</mat-icon>
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

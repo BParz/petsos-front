@@ -1,0 +1,469 @@
+.header-toolbar {
+    position: fixed;
+    /* Fijo para escritorio */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-heavy);
+    background: var(--bg-gradient) !important;
+    height: 80px;
+    /* Altura fija del header */
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid var(--primary-dark);
+
+    /* Efecto de resplandor para el header */
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--bg-gradient);
+        z-index: -1;
+        filter: blur(2px);
+        opacity: 0.2;
+    }
+
+    .container-fluid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding: 0 var(--spacing-lg);
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Asegurar que los iconos dentro del header sean nítidos */
+    .container-fluid mat-icon,
+    .brand-text mat-icon,
+    .nav-button mat-icon {
+        filter: none !important;
+        box-shadow: none !important;
+        background: none !important;
+        border: none !important;
+        transform: none !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        text-rendering: optimizeLegibility !important;
+    }
+
+    .brand-text {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--text-white);
+        font-family: 'Poppins', sans-serif;
+        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
+        position: relative;
+        z-index: 1;
+
+        // Los iconos dentro del texto de marca no deben tener sombra
+        mat-icon,
+        i,
+        .icon,
+        [class*="icon"] {
+            text-shadow: none !important;
+            filter: none !important;
+            box-shadow: none !important;
+            background: none !important;
+            border: none !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+            text-rendering: optimizeLegibility !important;
+        }
+    }
+
+    nav {
+        gap: 0.5rem;
+
+        .nav-button {
+            color: rgba(255, 255, 255, 0.98);
+            transition: all 0.3s ease;
+            border-radius: var(--border-radius-small);
+            padding: 8px 16px;
+            font-weight: 700;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+
+            // Los iconos dentro de botones de navegación no deben tener sombra
+            mat-icon,
+            i,
+            .icon,
+            [class*="icon"] {
+                text-shadow: none !important;
+                filter: none !important;
+                box-shadow: none !important;
+                background: none !important;
+                border: none !important;
+                -webkit-font-smoothing: antialiased !important;
+                -moz-osx-font-smoothing: grayscale !important;
+                text-rendering: optimizeLegibility !important;
+            }
+
+            &:hover {
+                color: var(--text-white);
+                background-color: rgba(255, 255, 255, 0.3);
+                transform: translateY(-2px);
+                border-color: rgba(255, 255, 255, 0.6);
+                box-shadow: var(--shadow-medium), 0 0 15px rgba(255, 255, 255, 0.3);
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+
+                mat-icon,
+                i,
+                .icon,
+                [class*="icon"] {
+                    text-shadow: none !important;
+                    filter: none !important;
+                    box-shadow: none !important;
+                    background: none !important;
+                    border: none !important;
+                    -webkit-font-smoothing: antialiased !important;
+                    -moz-osx-font-smoothing: grayscale !important;
+                    text-rendering: optimizeLegibility !important;
+                }
+            }
+
+            &.active {
+                color: var(--text-white);
+                background-color: rgba(255, 255, 255, 0.4);
+                box-shadow: var(--shadow-heavy), 0 0 15px rgba(255, 255, 255, 0.4);
+                border-color: rgba(255, 255, 255, 0.7);
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+
+                mat-icon,
+                i,
+                .icon,
+                [class*="icon"] {
+                    text-shadow: none !important;
+                    filter: none !important;
+                    box-shadow: none !important;
+                    background: none !important;
+                    border: none !important;
+                    -webkit-font-smoothing: antialiased !important;
+                    -moz-osx-font-smoothing: grayscale !important;
+                    text-rendering: optimizeLegibility !important;
+                }
+            }
+        }
+    }
+}
+
+// Overlay para el menú móvil
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    backdrop-filter: blur(2px);
+}
+
+// Menú móvil personalizado
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -280px; // Inicialmente oculto
+    width: 280px;
+    height: 100vh;
+    background: var(--bg-card);
+    box-shadow: var(--shadow-heavy);
+    z-index: 999;
+    transition: left 0.3s ease;
+    display: flex;
+    flex-direction: column;
+
+    &.open {
+        left: 0; // Mostrar cuando está abierto
+    }
+
+    .mobile-menu-header {
+        background: var(--bg-gradient);
+        border-bottom: 3px solid var(--primary-dark);
+        /* Borde más grueso */
+        padding: var(--spacing-lg);
+        position: relative;
+
+        /* Efecto de resplandor para el header */
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-gradient);
+            z-index: -1;
+            filter: blur(2px);
+            opacity: 0.2;
+        }
+
+        .brand-text {
+            font-size: 1.25rem;
+            font-weight: 800;
+            /* Extra bold */
+            color: var(--text-white);
+            font-family: 'Poppins', sans-serif;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
+            /* Sombra más pronunciada */
+            position: relative;
+            z-index: 1;
+
+            // Los iconos dentro del texto de marca del menú móvil no deben tener sombra
+            mat-icon,
+            i,
+            .icon,
+            [class*="icon"] {
+                text-shadow: none !important;
+                filter: none !important;
+                box-shadow: none !important;
+                background: none !important;
+                border: none !important;
+                -webkit-font-smoothing: antialiased !important;
+                -moz-osx-font-smoothing: grayscale !important;
+                text-rendering: optimizeLegibility !important;
+            }
+        }
+    }
+
+    .mobile-menu-content {
+        flex: 1;
+        padding: var(--spacing-md) 0;
+        overflow-y: auto;
+        background: var(--bg-card);
+
+        .mobile-nav-item {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-md) var(--spacing-lg);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-radius: 0;
+            border-bottom: 2px solid var(--bg-secondary);
+            /* Separador más visible */
+            position: relative;
+
+            mat-icon {
+                margin-right: var(--spacing-md);
+                color: var(--text-secondary);
+                transition: all 0.3s ease;
+                font-size: 20px;
+                /* Tamaño consistente */
+                width: 20px;
+                height: 20px;
+                /* Asegurar nitidez */
+                filter: none !important;
+                box-shadow: none !important;
+                background: none !important;
+                border: none !important;
+                -webkit-font-smoothing: antialiased !important;
+                -moz-osx-font-smoothing: grayscale !important;
+                text-rendering: optimizeLegibility !important;
+            }
+
+            span {
+                color: var(--text-primary);
+                font-weight: 700;
+                /* Más peso */
+                transition: color 0.3s ease;
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+                /* Sombra sutil */
+
+                // Los iconos dentro de spans no deben tener sombra
+                mat-icon,
+                i,
+                .icon,
+                [class*="icon"] {
+                    text-shadow: none !important;
+                    filter: none !important;
+                    box-shadow: none !important;
+                    background: none !important;
+                    border: none !important;
+                    -webkit-font-smoothing: antialiased !important;
+                    -moz-osx-font-smoothing: grayscale !important;
+                    text-rendering: optimizeLegibility !important;
+                }
+            }
+
+            &:hover {
+                background-color: var(--bg-secondary);
+                transform: translateX(4px);
+                border-left: 4px solid var(--primary-color);
+                /* Indicador visual */
+                box-shadow: var(--shadow-light);
+
+                mat-icon {
+                    color: var(--primary-color);
+                    transform: scale(1.1);
+                    /* Escala sutil en lugar de sombra */
+                    /* Removido filter: drop-shadow */
+                    text-shadow: none !important;
+                    filter: none !important;
+                    box-shadow: none !important;
+                    background: none !important;
+                    border: none !important;
+                    -webkit-font-smoothing: antialiased !important;
+                    -moz-osx-font-smoothing: grayscale !important;
+                    text-rendering: optimizeLegibility !important;
+                }
+
+                span {
+                    color: var(--primary-color);
+                    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+                    // Los iconos dentro de spans en hover no deben tener sombra
+                    mat-icon,
+                    i,
+                    .icon,
+                    [class*="icon"] {
+                        text-shadow: none !important;
+                        filter: none !important;
+                        box-shadow: none !important;
+                        background: none !important;
+                        border: none !important;
+                        -webkit-font-smoothing: antialiased !important;
+                        -moz-osx-font-smoothing: grayscale !important;
+                        text-rendering: optimizeLegibility !important;
+                    }
+                }
+            }
+
+            &.active {
+                background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+                border-left: 4px solid var(--accent-color);
+                /* Indicador visual */
+                box-shadow: var(--shadow-medium);
+
+                mat-icon {
+                    color: var(--text-white);
+                    transform: scale(1.05);
+                    /* Escala sutil */
+                    /* Removido filter: drop-shadow */
+                    text-shadow: none !important;
+                    filter: none !important;
+                    box-shadow: none !important;
+                    background: none !important;
+                    border: none !important;
+                    -webkit-font-smoothing: antialiased !important;
+                    -moz-osx-font-smoothing: grayscale !important;
+                    text-rendering: optimizeLegibility !important;
+                }
+
+                span {
+                    color: var(--text-white);
+                    font-weight: 800;
+                    /* Extra bold */
+                    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+                    /* Sombra más pronunciada */
+
+                    // Los iconos dentro de spans en active no deben tener sombra
+                    mat-icon,
+                    i,
+                    .icon,
+                    [class*="icon"] {
+                        text-shadow: none !important;
+                        filter: none !important;
+                        box-shadow: none !important;
+                        background: none !important;
+                        border: none !important;
+                        -webkit-font-smoothing: antialiased !important;
+                        -moz-osx-font-smoothing: grayscale !important;
+                        text-rendering: optimizeLegibility !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .mobile-menu-footer {
+        border-top: 1px solid var(--text-light);
+        background-color: var(--bg-secondary);
+        padding: var(--spacing-md);
+
+        button {
+            justify-content: flex-start;
+            color: var(--text-secondary);
+            border-radius: var(--border-radius-small);
+            margin-bottom: var(--spacing-sm);
+            width: 100%;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: var(--primary-color);
+                color: var(--text-white);
+                transform: translateX(4px);
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .header-toolbar {
+        height: 70px;
+        /* Altura reducida en móviles */
+        position: fixed;
+        /* Mantener fijo también en móviles */
+
+        .brand-text {
+            font-size: 1.25rem;
+        }
+
+        .container-fluid {
+            padding: 0 var(--spacing-md);
+        }
+    }
+}
+
+// Asegurar que el contenido principal tenga espacio para el header fijo
+@media (min-width: 769px) {
+    .header-toolbar {
+        position: fixed;
+        /* Siempre fijo en escritorio */
+    }
+}
+
+// Espacio para el contenido principal
+:host {
+    display: block;
+    margin-top: 0; // Remover margin-top ya que se maneja en app.scss
+}
+
+// Animaciones mejoradas
+.nav-button {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.5s;
+    }
+
+    &:hover::before {
+        left: 100%;
+    }
+}
+
+// Efectos especiales para el logo
+.d-flex.align-items-center {
+    .mat-icon {
+        animation: pulse 2s infinite;
+    }
+}

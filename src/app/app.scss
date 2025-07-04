@@ -1,0 +1,46 @@
+.main-content {
+    min-height: calc(100vh - 80px - 80px);
+    background-color: var(--bg-primary);
+    position: relative;
+    z-index: 1;
+    padding-top: 0;
+    flex: 1;
+    margin-bottom: 2.5rem;
+}
+
+// Estilos globales para la aplicación
+body {
+    margin: 0;
+    font-family: 'Poppins', 'Roboto', sans-serif;
+    background-color: var(--bg-primary);
+    overflow-x: hidden;
+    padding-top: 80px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+// Asegurar que el contenido no se superponga con el header fijo
+.container {
+    padding-top: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+// Ajuste específico para el formulario
+.form-registro-pet {
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    body {
+        padding-top: 70px;
+    }
+
+    .main-content {
+        min-height: calc(100vh - 70px - 400px);
+    }
+}

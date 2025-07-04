@@ -1,1 +1,879 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Estilos para SnackBars de diferentes tipos */
+.error-snackbar {
+    background: #f44336 !important;
+    color: white !important;
+
+    .mat-simple-snackbar-action {
+        color: white !important;
+    }
+}
+
+.warning-snackbar {
+    background: #ff9800 !important;
+    color: white !important;
+
+    .mat-simple-snackbar-action {
+        color: white !important;
+    }
+}
+
+.success-snackbar {
+    background: #4caf50 !important;
+    color: white !important;
+
+    .mat-simple-snackbar-action {
+        color: white !important;
+    }
+}
+
+.info-snackbar {
+    background: #2196f3 !important;
+    color: white !important;
+
+    .mat-simple-snackbar-action {
+        color: white !important;
+    }
+}
+
+@import '@angular/material/prebuilt-themes/azure-blue.css';
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* ===== VARIABLES CSS ===== */
+:root {
+    /* Colores principales - Paleta cálida y amigable */
+    --primary-color: #E55A2B;
+    /* Naranja más oscuro para mejor contraste */
+    --primary-light: #FF6B35;
+    --primary-dark: #D84315;
+
+    --secondary-color: #26A69A;
+    /* Turquesa más oscuro */
+    --secondary-light: #4ECDC4;
+    --secondary-dark: #00897B;
+
+    --accent-color: #FFC107;
+    /* Amarillo más intenso */
+    --accent-light: #FFE66D;
+    --accent-dark: #FF8F00;
+
+    /* Colores de mascotas */
+    --dog-color: #8D6E63;
+    /* Marrón perro */
+    --cat-color: #9E9E9E;
+    /* Gris gato */
+    --bird-color: #4CAF50;
+    /* Verde pájaro */
+    --other-color: #9C27B0;
+    /* Púrpura otros */
+
+    /* Colores de fondo */
+    --bg-primary: #F8F9FA;
+    /* Fondo más claro */
+    --bg-secondary: #E9ECEF;
+    /* Fondo secundario más contrastante */
+    --bg-card: #FFFFFF;
+    --bg-gradient: linear-gradient(135deg, #E55A2B 0%, #FF6B35 50%, #FFC107 100%);
+    /* Degradado más contrastante */
+
+    /* Colores de texto */
+    --text-primary: #1A1A1A;
+    /* Texto más oscuro */
+    --text-secondary: #495057;
+    /* Texto secundario más oscuro */
+    --text-light: #6C757D;
+    --text-white: #FFFFFF;
+
+    /* Sombras más pronunciadas */
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.15);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.2);
+    --shadow-heavy: 0 8px 32px rgba(0, 0, 0, 0.25);
+
+    /* Bordes */
+    --border-radius: 12px;
+    --border-radius-small: 8px;
+    --border-radius-large: 20px;
+
+    /* Espaciado */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 48px;
+}
+
+/* ===== RESET Y BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: 'Poppins', 'Roboto', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', 'Roboto', "Helvetica Neue", sans-serif;
+    overflow-x: hidden;
+    padding-top: 80px;
+    /* Espacio para header fijo en escritorio */
+}
+
+/* ===== TIPOGRAFÍA ===== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+
+    // Los iconos dentro de títulos no deben tener sombra de texto
+    mat-icon,
+    i,
+    .icon,
+    [class*="icon"] {
+        text-shadow: none !important;
+        filter: none !important;
+        box-shadow: none !important;
+        background: none !important;
+        border: none !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        text-rendering: optimizeLegibility !important;
+    }
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: var(--spacing-lg);
+
+    mat-icon,
+    i,
+    .icon,
+    [class*="icon"] {
+        text-shadow: none !important;
+        filter: none !important;
+        box-shadow: none !important;
+        background: none !important;
+        border: none !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        text-rendering: optimizeLegibility !important;
+    }
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+
+    mat-icon,
+    i,
+    .icon,
+    [class*="icon"] {
+        text-shadow: none !important;
+        filter: none !important;
+        box-shadow: none !important;
+        background: none !important;
+        border: none !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        text-rendering: optimizeLegibility !important;
+    }
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+
+    mat-icon,
+    i,
+    .icon,
+    [class*="icon"] {
+        text-shadow: none !important;
+        filter: none !important;
+        box-shadow: none !important;
+        background: none !important;
+        border: none !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        text-rendering: optimizeLegibility !important;
+    }
+}
+
+p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== BOTONES PERSONALIZADOS ===== */
+.btn-pet-primary {
+    background: var(--bg-gradient) !important;
+    border: 3px solid var(--primary-dark) !important;
+    border-radius: var(--border-radius) !important;
+    color: var(--text-white) !important;
+    font-weight: 800 !important;
+    padding: var(--spacing-md) var(--spacing-xl) !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-heavy) !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6) !important;
+    position: relative !important;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--bg-gradient);
+        border-radius: var(--border-radius);
+        z-index: -1;
+        filter: blur(4px);
+        opacity: 0.3;
+    }
+
+    &:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: var(--shadow-heavy), 0 0 20px rgba(229, 90, 43, 0.4) !important;
+        color: var(--text-white) !important;
+        background: var(--bg-gradient) !important;
+        border-color: var(--primary-dark) !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
+    }
+
+    &:active {
+        transform: translateY(0) !important;
+    }
+
+    &:disabled {
+        opacity: 0.6 !important;
+        background: var(--bg-gradient) !important;
+        color: var(--text-white) !important;
+    }
+}
+
+.btn-pet-secondary {
+    background: var(--secondary-color) !important;
+    border: 3px solid var(--secondary-dark) !important;
+    border-radius: var(--border-radius) !important;
+    color: var(--text-white) !important;
+    font-weight: 800 !important;
+    padding: var(--spacing-md) var(--spacing-xl) !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6) !important;
+    position: relative !important;
+
+    &:hover {
+        background: var(--secondary-dark) !important;
+        transform: translateY(-2px) !important;
+        box-shadow: var(--shadow-heavy), 0 0 20px rgba(38, 166, 154, 0.4) !important;
+        color: var(--text-white) !important;
+        border-color: var(--secondary-dark) !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
+    }
+}
+
+/* ===== TARJETAS PERSONALIZADAS ===== */
+.card-pet {
+    background: var(--bg-card);
+    border-radius: var(--border-radius-large);
+    border: 3px solid var(--bg-secondary);
+    box-shadow: var(--shadow-heavy);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+
+    .card-header {
+        background: var(--primary-color) !important;
+        color: var(--text-white);
+        border: none;
+        padding: var(--spacing-lg);
+        font-weight: 800;
+        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8);
+        position: relative;
+        box-shadow: var(--shadow-medium);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            z-index: -1;
+            filter: blur(1px);
+            opacity: 0.1;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: var(--text-white) !important;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8) !important;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.5px;
+
+            // Los iconos dentro de títulos en headers de tarjetas no deben tener sombra
+            mat-icon,
+            i,
+            .icon,
+            [class*="icon"] {
+                text-shadow: none !important;
+                filter: none !important;
+                box-shadow: none !important;
+                background: none !important;
+                border: none !important;
+                -webkit-font-smoothing: antialiased !important;
+                -moz-osx-font-smoothing: grayscale !important;
+                text-rendering: optimizeLegibility !important;
+            }
+        }
+
+        p,
+        span {
+            color: rgba(255, 255, 255, 0.9) !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6) !important;
+            position: relative;
+            z-index: 1;
+
+            // Los iconos dentro de párrafos y spans en headers de tarjetas no deben tener sombra
+            mat-icon,
+            i,
+            .icon,
+            [class*="icon"] {
+                text-shadow: none !important;
+                filter: none !important;
+                box-shadow: none !important;
+                background: none !important;
+                border: none !important;
+                -webkit-font-smoothing: antialiased !important;
+                -moz-osx-font-smoothing: grayscale !important;
+                text-rendering: optimizeLegibility !important;
+            }
+        }
+
+        // Los iconos directamente en el header de tarjeta no deben tener sombra
+        mat-icon,
+        i,
+        .icon,
+        [class*="icon"] {
+            text-shadow: none !important;
+            filter: none !important;
+            box-shadow: none !important;
+            background: none !important;
+            border: none !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+            text-rendering: optimizeLegibility !important;
+        }
+    }
+
+    .card-body {
+        padding: var(--spacing-lg);
+        background: var(--bg-card);
+        position: relative;
+        z-index: 1;
+    }
+}
+
+/* ===== FORMULARIOS PERSONALIZADOS ===== */
+.form-pet {
+    .form-control {
+        border-radius: var(--border-radius-small);
+        border: 2px solid var(--text-light);
+        padding: var(--spacing-md);
+        transition: all 0.3s ease;
+
+        &:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(255, 107, 53, 0.25);
+        }
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: var(--spacing-sm);
+    }
+}
+
+/* ===== BADGES Y CHIPS PERSONALIZADOS ===== */
+.badge-pet {
+    background: var(--accent-color);
+    color: var(--text-primary);
+    border-radius: var(--border-radius-small);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.badge-dog {
+    background: var(--dog-color);
+    color: var(--text-white);
+}
+
+.badge-cat {
+    background: var(--cat-color);
+    color: var(--text-white);
+}
+
+.badge-bird {
+    background: var(--bird-color);
+    color: var(--text-white);
+}
+
+.badge-other {
+    background: var(--other-color);
+    color: var(--text-white);
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate-bounce {
+    animation: bounce 2s infinite;
+}
+
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+
+.animate-slide-in {
+    animation: slideInUp 0.6s ease-out;
+}
+
+/* ===== UTILIDADES ===== */
+.text-gradient {
+    background: linear-gradient(135deg, var(--text-white), rgba(255, 255, 255, 0.9)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    position: relative !important;
+    z-index: 1 !important;
+
+    &::before {
+        content: attr(data-text);
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        color: var(--text-white) !important;
+        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8) !important;
+        -webkit-text-fill-color: var(--text-white) !important;
+    }
+}
+
+.bg-gradient {
+    background: var(--bg-gradient);
+}
+
+.shadow-pet {
+    box-shadow: var(--shadow-medium);
+}
+
+.rounded-pet {
+    border-radius: var(--border-radius);
+}
+
+.rounded-pet-large {
+    border-radius: var(--border-radius-large);
+}
+
+/* ===== SCROLLBAR PERSONALIZADA ===== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    .card-pet {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    body {
+        padding-top: 70px;
+        /* Espacio para header fijo en móvil */
+    }
+}
+
+/* ===== ESTADOS ESPECIALES ===== */
+.loading {
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        animation: loading 1.5s infinite;
+    }
+}
+
+@keyframes loading {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* ===== EFECTOS HOVER ===== */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-medium);
+    }
+}
+
+.hover-scale {
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+/* ===== ESTILOS PARA MATERIAL DESIGN ===== */
+.mat-mdc-card {
+    border-radius: var(--border-radius-large) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+
+    &:hover {
+        box-shadow: var(--shadow-medium) !important;
+    }
+}
+
+.mat-mdc-button {
+    border-radius: var(--border-radius-small) !important;
+    font-weight: 600 !important;
+}
+
+.mat-mdc-raised-button {
+    border-radius: var(--border-radius-small) !important;
+    font-weight: 600 !important;
+    box-shadow: var(--shadow-light) !important;
+
+    &:hover {
+        box-shadow: var(--shadow-medium) !important;
+    }
+}
+
+.mat-mdc-form-field {
+    .mat-mdc-form-field-flex {
+        border-radius: var(--border-radius-small) !important;
+    }
+}
+
+/* ===== ESTILOS ESPECÍFICOS PARA MASCOTAS ===== */
+.pet-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    object-fit: cover;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: scale(1.1);
+        border-color: var(--secondary-color);
+    }
+}
+
+.pet-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.pet-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: var(--spacing-md);
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius);
+    margin: var(--spacing-md) 0;
+
+    .stat-item {
+        text-align: center;
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    }
+}
+
+/* ===== CLASES DE TEXTO ESPECIALES ===== */
+.text-white-shadow {
+    color: var(--text-white) !important;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 700 !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* ===== ICONOS PERSONALIZADOS ===== */
+mat-icon {
+    color: inherit !important;
+    font-size: inherit !important;
+    width: auto !important;
+    height: auto !important;
+    box-shadow: none !important;
+    filter: none !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    vertical-align: middle !important;
+    transition: color 0.2s !important;
+    /* Forzar nitidez */
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    font-smooth: never !important;
+    /* Eliminar cualquier transformación */
+    transform: none !important;
+    /* Asegurar que no haya efectos de Material Design */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* Estilos específicos para iconos en diferentes contextos */
+.mat-icon {
+    /* Sobrescribir estilos de Material Design */
+    font-family: 'Material Icons' !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    font-size: 24px !important;
+    line-height: 1 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
+    word-wrap: normal !important;
+    direction: ltr !important;
+    /* Forzar nitidez */
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+    /* Eliminar efectos */
+    filter: none !important;
+    box-shadow: none !important;
+    background: none !important;
+    border: none !important;
+    outline: none !important;
+}
+
+/* Iconos en botones */
+.btn-pet-primary mat-icon,
+.btn-pet-secondary mat-icon {
+    font-size: 18px !important;
+    width: 18px !important;
+    height: 18px !important;
+    margin-right: var(--spacing-xs) !important;
+    transition: color 0.2s !important;
+    /* Sin efectos */
+    filter: none !important;
+    box-shadow: none !important;
+    background: none !important;
+    border: none !important;
+    transform: none !important;
+}
+
+/* Iconos en títulos */
+h1 mat-icon,
+h2 mat-icon,
+h3 mat-icon,
+.mat-mdc-card-title mat-icon {
+    font-size: 24px !important;
+    width: 24px !important;
+    height: 24px !important;
+    margin-right: var(--spacing-sm) !important;
+    transition: color 0.2s !important;
+    /* Sin efectos */
+    filter: none !important;
+    box-shadow: none !important;
+    background: none !important;
+    border: none !important;
+    transform: none !important;
+}
+
+/* Efectos hover para iconos */
+.btn-pet-primary:hover mat-icon,
+.btn-pet-secondary:hover mat-icon {
+    transform: scale(1.1) !important;
+    /* Solo escala, sin otros efectos */
+    filter: none !important;
+    box-shadow: none !important;
+}
+
+/* Iconos en navegación */
+.nav-button mat-icon {
+    font-size: 20px !important;
+    width: 20px !important;
+    height: 20px !important;
+    transition: color 0.2s !important;
+    /* Sin efectos */
+    filter: none !important;
+    box-shadow: none !important;
+    background: none !important;
+    border: none !important;
+    transform: none !important;
+}
+
+/* Iconos en footer */
+.footer-pet-min mat-icon {
+    font-size: 18px !important;
+    width: 18px !important;
+    height: 18px !important;
+    /* Sin efectos */
+    filter: none !important;
+    box-shadow: none !important;
+    background: none !important;
+    border: none !important;
+    transform: none !important;
+}
+
+/* Iconos en formularios */
+.form-registro-pet mat-icon {
+    /* Sin efectos */
+    filter: none !important;
+    box-shadow: none !important;
+    background: none !important;
+    border: none !important;
+    transform: none !important;
+}
+
+/* Iconos en header */
+.header-toolbar mat-icon {
+    /* Sin efectos */
+    filter: none !important;
+    box-shadow: none !important;
+    background: none !important;
+    border: none !important;
+    transform: none !important;
+}
+
+/* Iconos en menú móvil */
+.mobile-menu mat-icon {
+    /* Sin efectos */
+    filter: none !important;
+    box-shadow: none !important;
+    background: none !important;
+    border: none !important;
+    transform: none !important;
+}

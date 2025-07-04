@@ -1,0 +1,90 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="mb-0">
+                    <mat-icon class="me-2">pets</mat-icon>
+                    Mis Mascotas
+                </h2>
+                <button mat-raised-button color="primary" routerLink="/registro-pet">
+                    <mat-icon class="me-1">add</mat-icon>
+                    Agregar Mascota
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        @for (mascota of mascotas; track mascota.id) {
+        <div class="col-md-6 col-lg-4">
+            <mat-card class="mascota-card h-100">
+                <div class="mascota-imagen">
+                    <img [src]="mascota.imagen" [alt]="mascota.nombre" class="w-100">
+                    <div class="mascota-overlay">
+                        <button mat-icon-button color="white" class="edit-btn">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="white" class="qr-btn">
+                            <mat-icon>qr_code</mat-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <mat-card-content class="p-3">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h3 class="mascota-nombre mb-0">{{ mascota.nombre }}</h3>
+                        <mat-chip-set>
+                            <mat-chip [color]="mascota.genero === 'Macho' ? 'primary' : 'accent'" selected>
+                                {{ mascota.genero }}
+                            </mat-chip>
+                        </mat-chip-set>
+                    </div>
+
+                    <div class="mascota-info">
+                        <div class="info-item">
+                            <mat-icon class="info-icon">pets</mat-icon>
+                            <span>{{ mascota.tipo }} - {{ mascota.raza }}</span>
+                        </div>
+
+                        <div class="info-item">
+                            <mat-icon class="info-icon">palette</mat-icon>
+                            <span>{{ mascota.color }}</span>
+                        </div>
+
+                        <div class="info-item">
+                            <mat-icon class="info-icon">cake</mat-icon>
+                            <span>{{ getEdad(mascota.fechaNacimiento) }}</span>
+                        </div>
+                    </div>
+                </mat-card-content>
+
+                <mat-card-actions class="p-3 pt-0">
+                    <button mat-button color="primary" class="w-100">
+                        <mat-icon class="me-1">visibility</mat-icon>
+                        Ver Detalles
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+        }
+    </div>
+
+    @if (mascotas.length === 0) {
+    <div class="row">
+        <div class="col-12 text-center">
+            <mat-card class="empty-state">
+                <mat-card-content>
+                    <mat-icon class="empty-icon">pets</mat-icon>
+                    <h3>No tienes mascotas registradas</h3>
+                    <p class="text-muted">Comienza registrando tu primera mascota para poder generar su QR de
+                        identificación.</p>
+                    <button mat-raised-button color="primary" routerLink="/registro-pet">
+                        <mat-icon class="me-1">add</mat-icon>
+                        Registrar Primera Mascota
+                    </button>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    }
+</div>

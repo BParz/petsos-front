@@ -1,0 +1,388 @@
+// Estilos específicos para el formulario de registro
+.form-registro-pet {
+
+    // Icono en el título de la tarjeta
+    .mat-mdc-card-title mat-icon {
+        color: var(--text-white) !important;
+        font-size: 24px !important;
+        width: 24px !important;
+        height: 24px !important;
+        margin-right: var(--spacing-sm) !important;
+        transition: all 0.3s ease !important;
+        /* Sin sombras problemáticas */
+    }
+
+    // Iconos en los botones
+    .btn-pet-primary mat-icon,
+    .btn-pet-secondary mat-icon {
+        font-size: 18px !important;
+        width: 18px !important;
+        height: 18px !important;
+        margin-right: var(--spacing-xs) !important;
+        transition: all 0.3s ease !important;
+        /* Sin sombras problemáticas */
+    }
+
+    // Efectos hover para iconos en botones
+    .btn-pet-primary:hover mat-icon,
+    .btn-pet-secondary:hover mat-icon {
+        transform: scale(1.1) !important;
+        /* Escala sutil en lugar de sombra */
+    }
+
+    .mat-mdc-form-field {
+        margin-bottom: var(--spacing-md);
+
+        .mat-mdc-form-field-flex {
+            border-radius: var(--border-radius-small);
+            transition: all 0.3s ease;
+
+            &:hover {
+                box-shadow: var(--shadow-light);
+            }
+        }
+
+        &.mat-focused {
+            .mat-mdc-form-field-flex {
+                box-shadow: 0 0 0 2px var(--primary-color);
+            }
+        }
+    }
+
+    .mat-mdc-select {
+        font-weight: 500;
+    }
+
+    .mat-mdc-input-element {
+        font-weight: 500;
+    }
+}
+
+// Estilos para los botones del formulario - Mayor especificidad
+.form-registro-pet .btn-pet-primary.mat-mdc-raised-button {
+    background: var(--bg-gradient) !important;
+    color: var(--text-white) !important;
+    font-weight: 800 !important;
+    border-radius: var(--border-radius) !important;
+    padding: var(--spacing-md) var(--spacing-xl) !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-heavy) !important;
+    border: 3px solid var(--primary-dark) !important;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.7) !important;
+    position: relative !important;
+
+    // Los iconos dentro de botones primarios no deben tener sombra
+    mat-icon,
+    i,
+    .icon,
+    [class*="icon"] {
+        text-shadow: none !important;
+        filter: none !important;
+        box-shadow: none !important;
+        background: none !important;
+        border: none !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        text-rendering: optimizeLegibility !important;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--bg-gradient);
+        border-radius: var(--border-radius);
+        z-index: -1;
+        filter: blur(4px);
+        opacity: 0.3;
+    }
+
+    &:hover:not(:disabled) {
+        box-shadow: var(--shadow-heavy), 0 0 20px rgba(229, 90, 43, 0.5) !important;
+        background: var(--bg-gradient) !important;
+        color: var(--text-white) !important;
+        border-color: var(--primary-dark) !important;
+        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.9) !important;
+
+        mat-icon,
+        i,
+        .icon,
+        [class*="icon"] {
+            text-shadow: none !important;
+            filter: none !important;
+            box-shadow: none !important;
+            background: none !important;
+            border: none !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+            text-rendering: optimizeLegibility !important;
+        }
+    }
+
+    &:disabled {
+        opacity: 0.6 !important;
+        transform: none !important;
+        background: var(--bg-gradient) !important;
+        color: var(--text-white) !important;
+
+        mat-icon,
+        i,
+        .icon,
+        [class*="icon"] {
+            text-shadow: none !important;
+            filter: none !important;
+            box-shadow: none !important;
+            background: none !important;
+            border: none !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+            text-rendering: optimizeLegibility !important;
+        }
+    }
+
+    .mat-mdc-button-touch-target {
+        background: var(--bg-gradient) !important;
+    }
+}
+
+.form-registro-pet .btn-pet-secondary.mat-mdc-button {
+    background: var(--secondary-color) !important;
+    color: var(--text-white) !important;
+    font-weight: 800 !important;
+    border-radius: var(--border-radius) !important;
+    padding: var(--spacing-md) var(--spacing-xl) !important;
+    transition: all 0.3s ease !important;
+    border: 3px solid var(--secondary-dark) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.7) !important;
+    position: relative !important;
+
+    // Los iconos dentro de botones secundarios no deben tener sombra
+    mat-icon,
+    i,
+    .icon,
+    [class*="icon"] {
+        text-shadow: none !important;
+        filter: none !important;
+        box-shadow: none !important;
+        background: none !important;
+        border: none !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        text-rendering: optimizeLegibility !important;
+    }
+
+    &:hover {
+        background: var(--secondary-dark) !important;
+        box-shadow: var(--shadow-heavy), 0 0 20px rgba(38, 166, 154, 0.5) !important;
+        color: var(--text-white) !important;
+        border-color: var(--secondary-dark) !important;
+        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.9) !important;
+
+        mat-icon,
+        i,
+        .icon,
+        [class*="icon"] {
+            text-shadow: none !important;
+            filter: none !important;
+            box-shadow: none !important;
+            background: none !important;
+            border: none !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+            text-rendering: optimizeLegibility !important;
+        }
+    }
+
+    .mat-mdc-button-touch-target {
+        background: var(--secondary-color) !important;
+    }
+}
+
+// Estilos para la tarjeta del formulario
+.card-pet {
+    border-radius: var(--border-radius-large) !important;
+    box-shadow: var(--shadow-heavy) !important;
+    border: 3px solid var(--bg-secondary) !important;
+    transition: all 0.3s ease !important;
+    overflow: hidden !important;
+    position: relative !important;
+
+    .mat-mdc-card-header {
+        background: var(--primary-color) !important;
+        color: var(--text-white) !important;
+        border: none !important;
+        padding: var(--spacing-lg) !important;
+        border-bottom: 3px solid var(--primary-dark) !important;
+        position: relative !important;
+        box-shadow: var(--shadow-medium) !important;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            z-index: -1;
+            filter: blur(1px);
+            opacity: 0.1;
+        }
+
+        .mat-mdc-card-title {
+            color: var(--text-white) !important;
+            font-family: 'Poppins', sans-serif !important;
+            font-weight: 800 !important;
+            margin: 0 !important;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8) !important;
+            position: relative !important;
+            z-index: 1 !important;
+            letter-spacing: 0.5px !important;
+
+            // Los iconos dentro del título de la tarjeta no deben tener sombra
+            mat-icon,
+            i,
+            .icon,
+            [class*="icon"] {
+                text-shadow: none !important;
+                filter: none !important;
+                box-shadow: none !important;
+                background: none !important;
+                border: none !important;
+                -webkit-font-smoothing: antialiased !important;
+                -moz-osx-font-smoothing: grayscale !important;
+                text-rendering: optimizeLegibility !important;
+            }
+        }
+
+        .mat-mdc-card-subtitle {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 600 !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6) !important;
+            position: relative !important;
+            z-index: 1 !important;
+
+            // Los iconos dentro del subtítulo de la tarjeta no deben tener sombra
+            mat-icon,
+            i,
+            .icon,
+            [class*="icon"] {
+                text-shadow: none !important;
+                filter: none !important;
+                box-shadow: none !important;
+                background: none !important;
+                border: none !important;
+                -webkit-font-smoothing: antialiased !important;
+                -moz-osx-font-smoothing: grayscale !important;
+                text-rendering: optimizeLegibility !important;
+            }
+        }
+
+        // Los iconos directamente en el header de la tarjeta no deben tener sombra
+        mat-icon,
+        i,
+        .icon,
+        [class*="icon"] {
+            text-shadow: none !important;
+            filter: none !important;
+            box-shadow: none !important;
+            background: none !important;
+            border: none !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+            text-rendering: optimizeLegibility !important;
+        }
+    }
+
+    .mat-mdc-card-content {
+        padding: var(--spacing-lg) !important;
+        background: var(--bg-card) !important;
+        position: relative !important;
+        z-index: 1 !important;
+    }
+}
+
+// Animaciones para el formulario
+.form-registro-pet {
+    animation: slideInUp 0.6s ease-out;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .card-pet {
+        margin: var(--spacing-md);
+
+        .mat-mdc-card-header {
+            padding: var(--spacing-md) !important;
+        }
+
+        .mat-mdc-card-content {
+            padding: var(--spacing-md) !important;
+        }
+    }
+
+    .btn-pet-primary,
+    .btn-pet-secondary {
+        width: 100%;
+        margin-bottom: var(--spacing-sm);
+    }
+}
+
+// Efectos especiales para campos con errores
+.mat-mdc-form-field.mat-form-field-invalid {
+    .mat-mdc-form-field-flex {
+        border-color: #f44336 !important;
+        box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.2) !important;
+    }
+}
+
+// Efectos para campos válidos
+.mat-mdc-form-field.mat-form-field-valid {
+    .mat-mdc-form-field-flex {
+        border-color: var(--secondary-color) !important;
+    }
+}
+
+// Estilos adicionales para asegurar que los botones se vean correctamente
+.mat-mdc-raised-button.mat-primary {
+    background: var(--bg-gradient) !important;
+    color: var(--text-white) !important;
+}
+
+.mat-mdc-button {
+    &.btn-pet-primary {
+        background: var(--bg-gradient) !important;
+        color: var(--text-white) !important;
+    }
+
+    &.btn-pet-secondary {
+        background: var(--secondary-color) !important;
+        color: var(--text-white) !important;
+    }
+}
+
+// Estilos específicos para el texto con gradiente
+.text-gradient {
+    background: linear-gradient(135deg, var(--text-white), rgba(255, 255, 255, 0.9)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    position: relative !important;
+    z-index: 1 !important;
+
+    /* Fallback para navegadores que no soportan background-clip */
+    &::before {
+        content: attr(data-text);
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        color: var(--text-white) !important;
+        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8) !important;
+        -webkit-text-fill-color: var(--text-white) !important;
+    }
+}
